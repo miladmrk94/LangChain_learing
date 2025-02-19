@@ -10,7 +10,7 @@ import { StructuredOutputParser } from "langchain/output_parsers";
 import { z } from "zod";
 
 const model = new ChatGoogleGenerativeAI({
-  apiKey: "AIzaSyDnrn-BkL6Tl1coOvfeulrR2hMF8fS6UBk",
+  apiKey:process.env.GEMINI_API_KEY,
   temperature: 0.7,
 });
 // -1- and -2-
@@ -60,7 +60,7 @@ const chain = promptWithInstructions.pipe(model).pipe(parser);
 
 // -3- and -4-
 const response = await chain.invoke({
-  input: "P",
+  input: "G",
   formatInstruction: parser.getFormatInstructions(),
 });
 
